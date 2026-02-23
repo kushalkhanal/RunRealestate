@@ -1,0 +1,111 @@
+import { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useInView } from 'framer-motion'
+import axios from 'axios'
+import PlotCard from './PlotCard'
+
+const TABS = ['all', 'residential', 'commercial', 'agricultural']
+const TAB_LABELS = { all: 'All Plots', residential: 'Residential', commercial: 'Commercial', agricultural: 'Agricultural' }
+
+// Fallback data in case backend is not running
+const FALLBACK = [
+    { _id: '1', title: 'Sunrise Valley Residential Plot', price: '₹45 Lakhs', area: '1200 sq.ft', category: 'residential', location: 'Pokhara Road, Butwal', image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&auto=format', badge: 'Hot' },
+    { _id: '2', title: 'Green Meadows Plot', price: '₹32 Lakhs', area: '900 sq.ft', category: 'residential', location: 'Siddharthanagar, Bhairahawa', image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&auto=format', badge: 'New' },
+    { _id: '3', title: 'City Centre Commercial Space', price: '₹1.2 Crore', area: '2400 sq.ft', category: 'commercial', location: 'Main Bazaar, Butwal', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&auto=format', badge: 'Premium' },
+    { _id: '4', title: 'Highway Commercial Plot', price: '₹85 Lakhs', area: '3200 sq.ft', category: 'commercial', location: 'Butwal-Nawalparasi Highway', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&auto=format', badge: 'Featured' },
+    { _id: '5', title: 'Fertile Agricultural Land', price: '₹18 Lakhs', area: '5 Ropani', category: 'agricultural', location: 'Tilottama, Rupandehi', image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format', badge: 'New' },
+    { _id: '6', title: 'Lakeview Premium Plot', price: '₹72 Lakhs', area: '1800 sq.ft', category: 'residential', location: 'Devdaha, Rupandehi', image: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&auto=format', badge: 'Hot' },
+]
+
+export default function FeaturedPlots() {
+    const [activeTab, setActiveTab] = useState('all')
+    const [plots, setPlots] = useState(FALLBACK)
+    const [filtered, setFiltered] = useState(FALLBACK)
+    const [loading, setLoading] = useState(true)
+    const ref = useRef(null)
+    const inView = useInView(ref, { once: true, margin: '-60px' })
+
+    useEffect(() => {
+        axios.get('/api/plots')
+            .then(res => { setPlots(res.data); setFiltered(res.data) })
+            .catch(() => { /* use fallback */ })
+            .finally(() => setLoading(false))
+    }, [])
+
+    useEffect(() => {
+        setFiltered(activeTab === 'all' ? plots : plots.filter(p => p.category === activeTab))
+    }, [activeTab, plots])
+
+    return (
+        <section id="plots" className="plots" ref={ref}>
+            <div className="container">
+                <div className="section-header">
+                    <motion.span
+                        className="section-tag"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={inView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.5 }}
+                    >
+                        Our Listings
+                    </motion.span>
+                    <motion.h2
+                        className="section-title"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={inView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                    >
+                        Featured <span>Properties</span>
+                    </motion.h2>
+                    <motion.p
+                        className="section-subtitle"
+                        style={{ margin: '12px auto 0' }}
+                        initial={{ opacity: 0 }}
+                        animate={inView ? { opacity: 1 } : {}}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                    >
+                        Browse through our hand-picked plots with verified documentation, prime locations, and the best market pricing.
+                    </motion.p>
+
+                    {/* Filter tabs */}
+                    <motion.div
+                        className="filter-tabs"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={inView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                    >
+                        {TABS.map(tab => (
+                            <button
+                                key={tab}
+                                className={`filter-tab${activeTab === tab ? ' active' : ''}`}
+                                onClick={() => setActiveTab(tab)}
+                            >
+                                {TAB_LABELS[tab]}
+                            </button>
+                        ))}
+                    </motion.div>
+                </div>
+
+                {/* Grid */}
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={activeTab}
+                        className="plots-grid"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.4 }}
+                    >
+                        {loading
+                            ? Array(6).fill(0).map((_, i) => (
+                                <div key={i} style={{ background: '#eee', borderRadius: 14, height: 360, animation: 'pulse 1.5s ease infinite' }} />
+                            ))
+                            : filtered.map((plot, i) => (
+                                <PlotCard key={plot._id} plot={plot} index={i} inView={inView} />
+                            ))
+                        }
+                    </motion.div>
+                </AnimatePresence>
+            </div>
+        </section>
+    )
+}
