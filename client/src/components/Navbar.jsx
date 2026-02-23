@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { FiFacebook } from 'react-icons/fi'
+import { SiTiktok } from 'react-icons/si'
+import { BsWhatsapp } from 'react-icons/bs'
 import logo from '../assets/logo final.png'
 
 const navLinks = [
@@ -53,6 +56,11 @@ export default function Navbar() {
                                 </a>
                             </li>
                         ))}
+                        <li className="nav-socials">
+                            <a href="https://www.facebook.com/run.realestate" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FiFacebook /></a>
+                            <a href="https://www.tiktok.com/@run.realestate" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><SiTiktok /></a>
+                            <a href="https://wa.me/9779857022622" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><BsWhatsapp /></a>
+                        </li>
                         <li>
                             <a
                                 href="#contact"
@@ -97,6 +105,11 @@ export default function Navbar() {
                                 {link.label}
                             </motion.a>
                         ))}
+                        <div className="mobile-socials">
+                            <motion.a href="https://www.facebook.com/run.realestate" target="_blank" rel="noopener noreferrer" aria-label="Facebook" initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: navLinks.length * 0.07 + 0.1 }}><FiFacebook /></motion.a>
+                            <motion.a href="https://www.tiktok.com/@run.realestate" target="_blank" rel="noopener noreferrer" aria-label="TikTok" initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: navLinks.length * 0.07 + 0.15 }}><SiTiktok /></motion.a>
+                            <motion.a href="https://wa.me/9779857022622" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: navLinks.length * 0.07 + 0.2 }}><BsWhatsapp /></motion.a>
+                        </div>
                         <motion.a
                             href="#contact"
                             className="mobile-close-btn"

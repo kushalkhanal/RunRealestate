@@ -25,7 +25,7 @@ export default function Footer() {
                         <div className="footer-socials">
                             {[
                                 { Icon: FiFacebook, href: 'https://www.facebook.com/run.realestate', label: 'Facebook' },
-                                { Icon: SiTiktok, href: 'https://www.tiktok.com/', label: 'TikTok' },
+                                { Icon: SiTiktok, href: 'https://www.tiktok.com/@run.realestate', label: 'TikTok' },
                                 { Icon: BsWhatsapp, href: 'https://wa.me/9779857022622', label: 'WhatsApp' },
                             ].map(({ Icon, href, label }) => (
                                 <a
