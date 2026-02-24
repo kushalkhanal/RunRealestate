@@ -4,17 +4,21 @@ import { useInView } from 'framer-motion'
 import axios from 'axios'
 import PlotCard from './PlotCard'
 
+import manigramImg from '../assets/manigram plot.jpeg'
+import butwalImg from '../assets/butwal_commercial_plot.png'
+import suspuraImg from '../assets/suspura plot.jpg'
+
 const TABS = ['all', 'residential', 'commercial', 'agricultural']
 const TAB_LABELS = { all: 'All Plots', residential: 'Residential', commercial: 'Commercial', agricultural: 'Agricultural' }
 
 // Fallback data in case backend is not running
 const FALLBACK = [
     { _id: '1', title: 'Sunrise Valley Residential Plot', price: '₹45 Lakhs', area: '1200 sq.ft', category: 'residential', location: 'Pokhara Road, Butwal', image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&auto=format', badge: 'Hot' },
-    { _id: '2', title: 'Green Meadows Plot', price: '₹32 Lakhs', area: '900 sq.ft', category: 'residential', location: 'Siddharthanagar, Bhairahawa', image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&auto=format', badge: 'New' },
-    { _id: '3', title: 'City Centre Commercial Space', price: '₹1.2 Crore', area: '2400 sq.ft', category: 'commercial', location: 'Main Bazaar, Butwal', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&auto=format', badge: 'Premium' },
-    { _id: '4', title: 'Highway Commercial Plot', price: '₹85 Lakhs', area: '3200 sq.ft', category: 'commercial', location: 'Butwal-Nawalparasi Highway', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&auto=format', badge: 'Featured' },
+    { _id: '2', title: 'Manigram Plot', price: '₹32 Lakhs', area: '900 sq.ft', category: 'residential', location: 'Near Bisram Batika', image: manigramImg, badge: 'New' },
+    { _id: '3', title: 'City Centre Commercial Space', price: '₹1.2 Crore', area: '2400 sq.ft', category: 'commercial', location: 'Main Bazaar, Butwal', image: butwalImg, badge: 'Premium' },
+    { _id: '4', title: 'Pharsatikar plot', price: '₹85 Lakhs', area: '3200 sq.ft', category: 'commercial', location: 'Near Pharsatikar Chowk', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&auto=format', badge: 'Featured' },
     { _id: '5', title: 'Fertile Agricultural Land', price: '₹18 Lakhs', area: '5 Ropani', category: 'agricultural', location: 'Tilottama, Rupandehi', image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format', badge: 'New' },
-    { _id: '6', title: 'Lakeview Premium Plot', price: '₹72 Lakhs', area: '1800 sq.ft', category: 'residential', location: 'Devdaha, Rupandehi', image: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&auto=format', badge: 'Hot' },
+    { _id: '6', title: 'Suspura Plot', price: '₹72 Lakhs', area: '1800 sq.ft', category: 'residential', location: 'Devdaha, Rupandehi', image: suspuraImg, badge: 'Hot' },
 ]
 
 export default function FeaturedPlots() {
@@ -27,7 +31,22 @@ export default function FeaturedPlots() {
 
     useEffect(() => {
         axios.get('/api/plots')
-            .then(res => { setPlots(res.data); setFiltered(res.data) })
+            .then(res => {
+                const processed = res.data.map(p => {
+                    if (p.title === 'Green Meadows Residential Plot' || p.title === 'Manigram Plot') {
+                        return { ...p, title: 'Manigram Plot', location: 'Near Bisram Batika', image: manigramImg };
+                    }
+                    if (p.title === 'City Centre Commercial Space') {
+                        return { ...p, image: butwalImg };
+                    }
+                    if (p.title === 'Lakeview Premium Residential' || p.title === 'Suspura Plot') {
+                        return { ...p, title: 'Suspura Plot', image: suspuraImg };
+                    }
+                    return p;
+                });
+                setPlots(processed);
+                setFiltered(processed);
+            })
             .catch(() => { /* use fallback */ })
             .finally(() => setLoading(false))
     }, [])
