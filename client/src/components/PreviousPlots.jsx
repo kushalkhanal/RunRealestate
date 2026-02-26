@@ -5,6 +5,7 @@ import { HiOutlineTag } from 'react-icons/hi'
 import manigramImg from '../assets/manigram plot.jpeg'
 import butwalImg from '../assets/butwal_commercial_plot.png'
 import suspuraImg from '../assets/suspura plot.jpg'
+import pharsatikarImg from '../assets/image.png'
 
 // ── When you're ready, create a /public/plots/ folder and replace
 //    the `image` paths below with your actual filenames, e.g.:
@@ -48,12 +49,12 @@ const previousPlots = [
         color: '#10b981',
     },
     {
-        title: 'Pharsatikar plot',
+        title: 'House in Pharsatikar',
         location: 'Near Pharsatikar Chowk',
-        category: 'Commercial',
+        category: 'Residential',
         area: '3200 sq.ft',
         status: 'Sold',
-        image: null,
+        image: pharsatikarImg,
         color: '#f59e0b',
     },
     {

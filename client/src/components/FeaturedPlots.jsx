@@ -7,17 +7,20 @@ import PlotCard from './PlotCard'
 import manigramImg from '../assets/manigram plot.jpeg'
 import butwalImg from '../assets/butwal_commercial_plot.png'
 import suspuraImg from '../assets/suspura plot.jpg'
+import pharsatikarImg from '../assets/image.png'
+import fertileLandImg from '../assets/fertile land.png'
+import sunriseValleyImg from '../assets/best plot for house.png'
 
 const TABS = ['all', 'residential', 'commercial', 'agricultural']
 const TAB_LABELS = { all: 'All Plots', residential: 'Residential', commercial: 'Commercial', agricultural: 'Agricultural' }
 
 // Fallback data in case backend is not running
 const FALLBACK = [
-    { _id: '1', title: 'Sunrise Valley Residential Plot', price: '₹45 Lakhs', area: '1200 sq.ft', category: 'residential', location: 'Pokhara Road, Butwal', image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&auto=format', badge: 'Hot' },
+    { _id: '1', title: 'Sunrise Valley Residential Plot', price: '₹45 Lakhs', area: '1200 sq.ft', category: 'residential', location: 'Pokhara Road, Butwal', image: sunriseValleyImg, badge: 'Sold' },
     { _id: '2', title: 'Manigram Plot', price: '₹32 Lakhs', area: '900 sq.ft', category: 'residential', location: 'Near Bisram Batika', image: manigramImg, badge: 'New' },
     { _id: '3', title: 'City Centre Commercial Space', price: '₹1.2 Crore', area: '2400 sq.ft', category: 'commercial', location: 'Main Bazaar, Butwal', image: butwalImg, badge: 'Premium' },
-    { _id: '4', title: 'Pharsatikar plot', price: '₹85 Lakhs', area: '3200 sq.ft', category: 'commercial', location: 'Near Pharsatikar Chowk', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&auto=format', badge: 'Featured' },
-    { _id: '5', title: 'Fertile Agricultural Land', price: '₹18 Lakhs', area: '5 Ropani', category: 'agricultural', location: 'Tilottama, Rupandehi', image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format', badge: 'New' },
+    { _id: '4', title: 'House in Pharsatikar', price: '₹80 Lakhs', area: '3200 sq.ft', category: 'residential', location: 'Near Pharsatikar Chowk', image: pharsatikarImg, badge: 'Sold' },
+    { _id: '5', title: 'Fertile Agricultural Land', price: '₹18 Lakhs', area: '5 Ropani', category: 'agricultural', location: 'Tilottama, Rupandehi', image: fertileLandImg, badge: 'Sold' },
     { _id: '6', title: 'Suspura Plot', price: '₹72 Lakhs', area: '1800 sq.ft', category: 'residential', location: 'Devdaha, Rupandehi', image: suspuraImg, badge: 'Hot' },
 ]
 
@@ -33,6 +36,9 @@ export default function FeaturedPlots() {
         axios.get('/api/plots')
             .then(res => {
                 const processed = res.data.map(p => {
+                    if (p.title === 'Sunrise Valley Residential Plot') {
+                        return { ...p, image: sunriseValleyImg, badge: 'Sold' };
+                    }
                     if (p.title === 'Green Meadows Residential Plot' || p.title === 'Manigram Plot') {
                         return { ...p, title: 'Manigram Plot', location: 'Near Bisram Batika', image: manigramImg };
                     }
@@ -41,6 +47,12 @@ export default function FeaturedPlots() {
                     }
                     if (p.title === 'Lakeview Premium Residential' || p.title === 'Suspura Plot') {
                         return { ...p, title: 'Suspura Plot', image: suspuraImg };
+                    }
+                    if (p.title === 'Pharsatikar plot' || p.title === 'House in Pharsatikar') {
+                        return { ...p, title: 'House in Pharsatikar', price: '₹80 Lakhs', category: 'residential', location: 'Near Pharsatikar Chowk', image: pharsatikarImg, badge: 'Sold' };
+                    }
+                    if (p.title === 'Fertile Land Agricultural Plot' || p.title === 'Fertile Agricultural Land') {
+                        return { ...p, title: 'Fertile Agricultural Land', image: fertileLandImg, badge: 'Sold' };
                     }
                     return p;
                 });
