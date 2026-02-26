@@ -2267,6 +2267,14 @@ svg {
 }
 
 @media (max-width: 768px) {
+  .statsbar {
+    display: none;
+  }
+
+  .about {
+    display: none;
+  }
+
   .nav-links {
     display: none;
   }
