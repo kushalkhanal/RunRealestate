@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Primary Static Pages -->
+  <url>
+    <loc>https://runrealestate.com.np/</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://runrealestate.com.np/about</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://runrealestate.com.np/contact</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- High-Priority Property Listings (Static Examples) -->
+  <url>
+    <loc>https://runrealestate.com.np/plot/sunrise-valley-plot</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://runrealestate.com.np/assets/manigram%20plot.jpeg</image:loc>
+      <image:title>Sunrise Valley Plot - Residential Land in Butwal</image:title>
+      <image:caption>Premium residential plot in Sunrise Valley, Butwal.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://runrealestate.com.np/plot/house-in-pharsatikar</loc>
+    <lastmod>2026-03-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://runrealestate.com.np/assets/image.png</image:loc>
+      <image:title>House in Pharsatikar - Prime Residential Property</image:title>
+      <image:caption>Ready-to-move house located near Pharsatikar Chowk.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://runrealestate.com.np/plot/city-centre-commercial</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://runrealestate.com.np/assets/butwal_commercial_plot.png</image:loc>
+      <image:title>City Centre Commercial Space in Butwal</image:title>
+      <image:caption>High-traffic commercial land in Main Bazaar, Butwal.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://runrealestate.com.np/plot/tinau-riverside-land</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://runrealestate.com.np/assets/fertile%20land.png</image:loc>
+      <image:title>Tinau Riverside Land - Agricultural Plot</image:title>
+      <image:caption>Fertile agricultural land located along the Tinau Belt in Rupandehi.</image:caption>
+    </image:image>
+  </url>
+
+</urlset>
