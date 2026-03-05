@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { FiCheckCircle } from 'react-icons/fi'
+import './About.css'
 
 const points = [
     { title: 'Community-First Approach', desc: 'We serve local families and investors with equal dedication and honesty.' },
@@ -26,6 +27,7 @@ export default function About() {
                         <img
                             src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&auto=format"
                             alt="About Run Real Estate"
+                            loading="lazy"
                         />
                         <div className="about-img-overlay">
                             <span className="big">10+</span>

@@ -1,0 +1,180 @@
+/* ─── Featured Plots ───────────────────────────────── */
+.plots {
+  padding: 100px 0;
+  background: var(--off-white);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.filter-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  background: var(--white);
+  color: var(--text-light);
+  border: 2px solid transparent;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+
+.filter-tab.active,
+.filter-tab:hover {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+}
+
+.filter-tab.active {
+  box-shadow: 0 4px 20px rgba(26, 26, 46, 0.25);
+}
+
+.plots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+/* Plot Card */
+.plot-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  position: relative;
+}
+
+.plot-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.plot-card-image {
+  position: relative;
+  overflow: hidden;
+  height: 210px;
+}
+
+.plot-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.plot-card:hover .plot-card-image img {
+  transform: scale(1.08);
+}
+
+.plot-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 5px 14px;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.plot-badge-hot {
+  background: #ef4444;
+  color: #fff;
+}
+
+.plot-badge-new {
+  background: #10b981;
+  color: #fff;
+}
+
+.plot-badge-featured,
+.plot-badge-premium {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.plot-card-body {
+  padding: 22px;
+}
+
+.plot-category {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 8px;
+}
+
+.plot-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.plot-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-light);
+  font-size: 0.84rem;
+  margin-bottom: 16px;
+}
+
+.plot-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--light-gray);
+}
+
+.plot-price {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.plot-area {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.plot-enquire-btn {
+  padding: 9px 18px;
+  border-radius: var(--radius-sm);
+  background: rgba(201, 168, 76, 0.1);
+  color: var(--gold-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+  transition: var(--transition);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+}
+
+.plot-enquire-btn:hover {
+  background: var(--gold);
+  color: var(--white);
+  border-color: var(--gold);
+}
+
+
+@media (max-width: 768px) {
+  .plots-grid {
+    grid-template-columns: 1fr;
+  }
+}

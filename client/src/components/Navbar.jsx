@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiFacebook } from 'react-icons/fi'
 import { SiTiktok } from 'react-icons/si'
 import { BsWhatsapp } from 'react-icons/bs'
-import logo from '../assets/logo final.png'
+import logo from '../assets/run logo.png'
+import './Navbar.css'
 
 const navLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'Plots', href: '#plots' },
-    { label: 'About', href: '#about' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', href: '/' },
+    { label: 'Plots', href: '/#plots' },
+    { label: 'About', href: '/about' },
+    { label: 'Contact', href: '/contact' },
 ]
 
 export default function Navbar() {
@@ -22,10 +24,22 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', onScroll)
     }, [])
 
+    const navigate = useNavigate()
+    const location = useLocation()
+
     const scrollTo = (href) => {
         setMenuOpen(false)
-        const el = document.querySelector(href)
-        if (el) el.scrollIntoView({ behavior: 'smooth' })
+        if (href.startsWith('/#')) {
+            const hash = href.substring(1)
+            if (location.pathname !== '/') {
+                navigate(href)
+            } else {
+                document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' })
+            }
+        } else {
+            navigate(href)
+            window.scrollTo(0, 0)
+        }
     }
 
     return (
@@ -37,7 +51,7 @@ export default function Navbar() {
                 transition={{ duration: 0.6, ease: 'easeOut' }}
             >
                 <div className="container">
-                    <a className="nav-logo" href="#home" onClick={e => { e.preventDefault(); scrollTo('#home') }}>
+                    <a className="nav-logo" href="/" onClick={e => { e.preventDefault(); scrollTo('/') }}>
                         <div className="nav-logo-wrap">
                             <img src={logo} alt="Run Real Estate Logo" className="logo-icon" />
                         </div>
@@ -63,9 +77,9 @@ export default function Navbar() {
                         </li>
                         <li>
                             <a
-                                href="#contact"
+                                href="/contact"
                                 className="nav-cta"
-                                onClick={e => { e.preventDefault(); scrollTo('#contact') }}
+                                onClick={e => { e.preventDefault(); scrollTo('/contact') }}
                             >
                                 Enquire Now
                             </a>
@@ -111,9 +125,9 @@ export default function Navbar() {
                             <motion.a href="https://wa.me/9779857022622" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: navLinks.length * 0.07 + 0.2 }}><BsWhatsapp /></motion.a>
                         </div>
                         <motion.a
-                            href="#contact"
+                            href="/contact"
                             className="mobile-close-btn"
-                            onClick={e => { e.preventDefault(); scrollTo('#contact') }}
+                            onClick={e => { e.preventDefault(); scrollTo('/contact') }}
                             initial={{ x: 40, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ delay: navLinks.length * 0.07 }}

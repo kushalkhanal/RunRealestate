@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import { MdRealEstateAgent, MdSupportAgent } from "react-icons/md"
+import './StatsBar.css'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { FiHome, FiUsers, FiAward, FiCheckCircle } from 'react-icons/fi'

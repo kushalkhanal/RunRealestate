@@ -1,0 +1,180 @@
+/* ─── Previous Plots Section ───────────────────────── */
+.prev-plots {
+  padding: 100px 0 60px;
+  background: var(--navy);
+  overflow: hidden;
+}
+
+.prev-plots .section-header {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.prev-plots .section-tag {
+  background: rgba(201, 168, 76, 0.15);
+  color: var(--gold-light);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+}
+
+.prev-plots .section-title {
+  color: var(--white);
+}
+
+.prev-plots .section-title span {
+  color: var(--gold);
+}
+
+.prev-plots .section-subtitle {
+  color: rgba(255, 255, 255, 0.45);
+  margin: 12px auto 0;
+}
+
+/* Rolling track — same pattern as testimonials */
+.prev-plots-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.prev-plots-track:hover {
+  animation-play-state: paused;
+}
+
+/* Individual plot card */
+.prev-plot-card {
+  width: 280px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius);
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.prev-plot-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(201, 168, 76, 0.25);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Image / placeholder area */
+.ppc-image {
+  position: relative;
+  height: 170px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ppc-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.prev-plot-card:hover .ppc-image img {
+  transform: scale(1.08);
+}
+
+/* Placeholder when no image */
+.ppc-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.ppc-placeholder-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+.ppc-placeholder-text {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* Sold badge overlay */
+.ppc-sold-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(16, 185, 129, 0.9);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 50px;
+  backdrop-filter: blur(4px);
+}
+
+/* Card body */
+.ppc-body {
+  padding: 16px 18px 18px;
+}
+
+.ppc-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 50px;
+  margin-bottom: 10px;
+}
+
+.ppc-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.ppc-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 6px;
+}
+
+.ppc-area {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+/* Bottom note */
+.prev-plots-note {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.35);
+  padding-bottom: 20px;
+}
+
+.prev-plots-note strong {
+  color: var(--gold);
+}

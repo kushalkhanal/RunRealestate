@@ -9,6 +9,7 @@ import {
 import { HiOutlineUser, HiOutlinePhone, HiOutlineMail, HiOutlineLocationMarker } from 'react-icons/hi'
 import { RiBuilding2Line, RiSendPlaneFill } from 'react-icons/ri'
 import { BsWhatsapp } from 'react-icons/bs'
+import './EnquiryForm.css'
 
 const PLOT_TYPES = ['Residential', 'Commercial', 'Agricultural', 'Not Sure Yet']
 

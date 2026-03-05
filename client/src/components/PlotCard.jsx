@@ -1,11 +1,15 @@
 import { motion } from 'framer-motion'
 import { FiMapPin } from 'react-icons/fi'
+import { useNavigate } from 'react-router-dom'
 
 const badgeClass = { Hot: 'hot', New: 'new', Featured: 'featured', Premium: 'premium' }
 
 export default function PlotCard({ plot, index, inView }) {
-    const scrollToContact = () => {
-        document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
+    const navigate = useNavigate()
+
+    const handleNavigation = () => {
+        const plotId = plot._id || plot.title.replace(/\s+/g, '-').toLowerCase()
+        navigate(`/plot/${plotId}`)
     }
 
     return (
@@ -34,8 +38,8 @@ export default function PlotCard({ plot, index, inView }) {
                         <div className="plot-price">{plot.price}</div>
                         <div className="plot-area">{plot.area}</div>
                     </div>
-                    <button className="plot-enquire-btn" onClick={scrollToContact}>
-                        Enquire →
+                    <button className="plot-enquire-btn" onClick={handleNavigation}>
+                        View Details →
                     </button>
                 </div>
             </div>

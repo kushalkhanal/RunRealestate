@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
 import { BsPlayCircleFill, BsPauseCircleFill } from 'react-icons/bs'
 import heroVideo from '../assets/to keep in stie .mp4'
+import './Hero.css'
 
 export default function Hero() {
     const titleRef = useRef(null)

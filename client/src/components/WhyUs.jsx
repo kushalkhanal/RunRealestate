@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import './WhyUs.css'
 
 const cards = [
     { icon: '📍', title: 'Prime Location', desc: 'Every plot is in a strategically chosen location with excellent connectivity and future growth potential.' },
@@ -80,6 +81,7 @@ export default function WhyUs() {
                         <img
                             src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&auto=format"
                             alt="Why choose us"
+                            loading="lazy"
                         />
                         <div className="whyus-badge">
                             <div className="num">500+</div>

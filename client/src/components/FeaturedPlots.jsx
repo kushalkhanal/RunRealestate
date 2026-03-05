@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import axios from 'axios'
 import PlotCard from './PlotCard'
+import './FeaturedPlots.css'
 
 import manigramImg from '../assets/manigram plot.jpeg'
 import butwalImg from '../assets/butwal_commercial_plot.png'

@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import logo from '../assets/logo final.png'
+import logo from '../assets/run logo.png'
+import './Loader.css'
 
 export default function Loader() {
     return (

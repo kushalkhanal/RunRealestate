@@ -6,6 +6,7 @@ import manigramImg from '../assets/manigram plot.jpeg'
 import butwalImg from '../assets/butwal_commercial_plot.png'
 import suspuraImg from '../assets/suspura plot.jpg'
 import pharsatikarImg from '../assets/image.png'
+import './PreviousPlots.css'
 
 // ── When you're ready, create a /public/plots/ folder and replace
 //    the `image` paths below with your actual filenames, e.g.:
@@ -148,7 +149,7 @@ export default function PreviousPlots() {
                                 style={{ background: `linear-gradient(135deg, ${plot.color}22, ${plot.color}44)` }}
                             >
                                 {plot.image ? (
-                                    <img src={plot.image} alt={plot.title} />
+                                    <img src={plot.image} alt={plot.title} loading="lazy" />
                                 ) : (
                                     <div className="ppc-placeholder">
                                         <div

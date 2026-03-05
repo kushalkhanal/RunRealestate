@@ -1,7 +1,8 @@
 import { FiFacebook, FiArrowRight } from 'react-icons/fi'
 import { SiTiktok } from 'react-icons/si'
 import { BsWhatsapp } from 'react-icons/bs'
-import logo from '../assets/logo final.png'
+import logo from '../assets/run logo.png'
+import './Footer.css'
 
 export default function Footer() {
     const scroll = (id) => document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -14,7 +15,7 @@ export default function Footer() {
                     <div>
                         <div className="footer-logo">
                             <div className="footer-logo-wrap">
-                                <img src={logo} alt="Run Real Estate Logo" className="logo-icon" />
+                                <img src={logo} alt="Run Real Estate Logo" className="logo-icon" loading="lazy" />
                             </div>
                             Run <span>Real Estate</span>
                         </div>
